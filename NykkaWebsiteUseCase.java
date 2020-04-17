@@ -40,12 +40,11 @@ public class NykkaWebsiteUseCase {
 		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-		//WebElement brandList = driver.findElementByXPath("//a[text()="brands"]");
+		//Mouse Hover action
 		Actions hover = new Actions(driver);
 		hover.moveToElement(driver.findElementByXPath("//a[text()=\"brands\"]"));
 		Thread.sleep(5000);
-     	//WebElement popular = driver.findElementByXPath("//a[@class='brandHeadingbox current_active']");
-		
+        	
 		hover.moveToElement(driver.findElementByXPath("//a[text()=\"Popular\"]")).perform();
 
      	driver.findElementByXPath("//img[@src='https://adn-static2.nykaa.com/media/wysiwyg/2019/lorealparis.png']").click();		
@@ -54,7 +53,7 @@ public class NykkaWebsiteUseCase {
 		
 		List<String> handlesInList = new ArrayList<String>(windowHandles);
 		
-		//Switched to Loreal Page
+		//Switch to Loreal Page
 		driver.switchTo().window(handlesInList.get(1));
 		Thread.sleep(3000);
 		String title = driver.getTitle();
@@ -68,7 +67,6 @@ public class NykkaWebsiteUseCase {
 		driver.findElementByXPath("//span[contains(text() ,'customer top rated')]").click();
 		Thread.sleep(3000);
 		driver.findElementByXPath("//div[text()='Category']").click();
-		//driver.findElementByXPath("//div[text()='Category']/following-sibling::div/i").click();
 		driver.findElementByXPath("//span[contains (text() ,'Shampoo')]").click();
 		String filterAppliedCheck = driver.findElementByXPath("//ul[@class='pull-left applied-filter-lists']/li[1]").getText();
 		
